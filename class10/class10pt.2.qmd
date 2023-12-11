@@ -1,0 +1,82 @@
+---
+title: "Class 10 pt2"
+author: "Emily Hickey (A15575724)"
+format: html
+---
+
+## Comparative structure analysis of Adenylate Kinase 
+
+We need some packages for todays class. These include `bio3d` and `msa`. 
+
+The `msa` package is from BioConductor. These packages focus on genomics type work and are managed by the `BiocManager` package.
+
+Install `install.packages("BiocManager)` and then `BiocManager::install("msa")` all entered in the R "brain" console. 
+
+>Q10. Which of the packages above is found only on BioConductor and not CRAN?
+
+msa
+
+>Q11. Which of the above packages is not found on BioConductor or CRAN?:
+
+>Q12. True or False? Functions from the devtools package can be used to install packages from GitHub and BitBucket?
+
+TRUE
+
+```{r}
+library(bio3d)
+
+aa <- get.seq("1ake_A")
+aa
+```
+
+Now I can search the PDB for related sequences: 
+```{r}
+b <- blast.pdb(aa)
+```
+
+```{r}
+hits <- plot(b)
+```
+
+These are the related structures in the PDB that we found via BLAST search...
+```{r}
+head(hits$pdb.id)
+```
+
+Side-note: Lets annotate these structures (in other words find out what they are, what species they are from, stuff about the experiment they were solved in etc.)
+
+For this we can use the `pdb.annotate()`
+
+```{r}
+anno <- pdb.annotate(hits$pdb.id)
+```
+
+```{r}
+#attributes(anno)
+head(anno)
+```
+
+Now we can download all these structures for further analysis with the `get.pdb()` function.
+```{r}
+files <- get.pdb(hits$pdb.id, path="pdbs", split=TRUE, gzip=TRUE)
+```
+
+## Align and superpose structures
+Now we have all these related structures we can Align and Superpose...
+
+```{r}
+pdbs <- pdbaln(files, fit = TRUE, exefile="msa")
+pdbs
+```
+## Principal Component Analysis
+
+```{r}
+pc.xray <- pca(pdbs)
+plot(pc.xray)
+```
+
+```{r}
+# Visualize first principal component
+pc1 <- mktrj(pc.xray, pc=1, file="pc_1.pdb")
+```
+
