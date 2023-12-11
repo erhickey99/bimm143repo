@@ -22,6 +22,6 @@ Class 13- [Transcriptomics and the analysis of RNA-Seq data](https://github.com/
 
 Class 14- [Mini RNA Seq Analysis](https://github.com/erhickey99/bimm143/blob/main/class14/class14.md)
 
-Class 18 [Analyzing sequencing data in the cloud, Plot](https://github.com/erhickey99/bimm143/blob/main/class18/Class18Plot.md)
+Class 18- [Analyzing sequencing data in the cloud, Plot](https://github.com/erhickey99/bimm143/blob/main/class18/Class18Plot.md)
 
-Class 19[Investigating Pertussis Resurgence](https://github.com/erhickey99/bimm143/blob/main/class19/class19.md)
+Class 19- [Investigating Pertussis Resurgence](https://github.com/erhickey99/bimm143/blob/main/class19/class19.md)
